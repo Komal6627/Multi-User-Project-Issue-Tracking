@@ -2,36 +2,6 @@ import Issue from "../models/issue.model.js";
 import Project from "../models/project.model.js";
 import Comment from "../models/comment.model.js";
 
-// Create a new issue
-// export const createIssueService = async ({ title, description, projectId, assignedTo, dueDate, organization }) => {
-//   const project = await Project.findOne({ _id: projectId, organization });
-//   if (!project) throw new Error("Project not found");
-//   console.log("Project ID from body:", project);
-// console.log("Organization from token:", organization);
-
-//   if (assignedTo && !project.members.includes(assignedTo)) {
-//     throw new Error("Assigned user is not a member of this project");
-//   }
-
-//   const issue = await Issue.create({
-//     title,
-//     description,
-//     project: projectId,
-//     assignedTo,
-//     dueDate,
-//     organization,
-//     activityLog: [
-//       {
-//         action: "CREATED",
-//         previousValue: null,
-//         newValue: "Issue created",
-//         changedBy: assignedTo || null,
-//       },
-//     ],
-//   });
-
-//   return issue;
-// };
 
 export const createIssueService = async ({
   title,

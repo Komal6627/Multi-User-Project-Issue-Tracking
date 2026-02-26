@@ -37,21 +37,6 @@ export const registerService = async (data) => {
   return user;
 };
 
-// export const loginService = async (email, password) => {
-//   const user = await User.findOne({ email });
-//   if (!user) throw new Error("Invalid credentials");
-
-//   const isMatch = await user.comparePassword(password);
-//   if (!isMatch) throw new Error("Invalid credentials");
-
-//   const accessToken = generateAccessToken(user);
-//   const refreshToken = generateRefreshToken(user);
-
-//   user.refreshToken = refreshToken;
-//   await user.save();
-
-//   return { accessToken, refreshToken, user };
-// };
 
 export const loginService = async (email, password) => {
   const user = await User.findOne({ email });

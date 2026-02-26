@@ -33,9 +33,10 @@ const handleSubmit = async (e) => {
       { withCredentials: true }
     );
 
-    console.log("Response:", response);
+    console.log("Backend response:", response.data);
 
-    login(response.data);
+    login(response.data);  
+    
     navigate("/dashboard");
   } catch (err) {
     console.log("Error:", err);
