@@ -1,24 +1,24 @@
+import 'dotenv/config';
 import express from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import authRoutes from "./routes/auth.routes.js";
+import organizationRoute from "./routes/organization.routes.js";
+import projectRoute from "./routes/project.routes.js"
+import { errorHandler } from "./middlewares/error.middleware.js";
+
+
 
 const app = express();
-
-// Middlewares
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true
-}));
 
 app.use(express.json());
 app.use(cookieParser());
 
-// Health Check Route
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "API is running..."
-  });
-});
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/organization", organizationRoute);
+app.use("/api/project", projectRoute);
+
+// Error Handler
+app.use(errorHandler);
 
 export default app;

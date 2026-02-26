@@ -1,22 +1,16 @@
-import dotenv from "dotenv";
-import app from "./app.js";
-import connectDB from "./config/db.js";
+import 'dotenv/config'; // load .env immediately
+import app from './app.js';
+import mongoose from 'mongoose';
 
-dotenv.config();
+const PORT = process.env.PORT || 5000;
+const MONGO_URL = process.env.MONGO_URL;
 
-const startServer = async () => {
-  try {
-    await connectDB();
+console.log("JWT_SECRET_KEY loaded:", process.env.JWT_SECRET_KEY); 
 
-    const PORT = process.env.PORT || 5000;
+mongoose.connect(MONGO_URL)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log("DB connection error:", err));
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-
-  } catch (error) {
-    console.error("Server failed to start:", error.message);
-  }
-};
-
-startServer();
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

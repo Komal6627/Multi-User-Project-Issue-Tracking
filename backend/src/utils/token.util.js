@@ -1,6 +1,12 @@
 import jwt from "jsonwebtoken";
 
+
+
 export const generateAccessToken = (user) => {
+  if (!process.env.JWT_SECRET_KEY) {
+    throw new Error("JWT_SECRET is not defined in .env");
+  }
+
   return jwt.sign(
     {
       id: user._id,
@@ -8,7 +14,7 @@ export const generateAccessToken = (user) => {
       organization: user.organization
     },
     process.env.JWT_SECRET_KEY,
-    { expiresIn: process.env.ACCESS_TOKEN_EXPIRE }
+    { expiresIn: "15m" }
   );
 };
 

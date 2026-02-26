@@ -2,20 +2,11 @@ import mongoose from "mongoose";
 
 const organizationSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    }
+    name: { type: String, required: true, trim: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false },
+    members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }] // list of user IDs
   },
-  {
-    timestamps: true
-  }
+  { timestamps: true }
 );
 
 const Organization = mongoose.model("Organization", organizationSchema);
