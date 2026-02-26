@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import organizationRoute from "./routes/organization.routes.js";
 import projectRoute from "./routes/project.routes.js"
+import issueRoute from "./routes/issue.routes.js"
 import { errorHandler } from "./middlewares/error.middleware.js";
 
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/organization", organizationRoute);
 app.use("/api/project", projectRoute);
+app.use("/api/issue", issueRoute)
 
 // Error Handler
 app.use(errorHandler);

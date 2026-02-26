@@ -1,5 +1,4 @@
 import { createProjectService, assignMemberService, getProjectsService } from "../services/project.service.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const createProject = async (req, res, next) => {
   try {
